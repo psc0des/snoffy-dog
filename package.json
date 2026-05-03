@@ -4,7 +4,10 @@
   "description": "A cute security scanner that sniffs out vulnerabilities in your code",
   "version": "0.1.0",
   "publisher": "snoffy",
-  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psc0des/snoffy-dog.git"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
