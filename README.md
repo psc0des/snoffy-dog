@@ -14,7 +14,7 @@ Snoffy Dog combines a 22-rule regex scanner with **IBM watsonx.ai Granite-4-h-sm
 
 ## Demo Video
 
-📹 **3-minute walkthrough**: https://youtu.be/luh6A40PJI8 
+📹 **3-minute walkthrough**: https://youtu.be/luh6A40PJI8
 
 ## External AI Tool Disclosure
 
@@ -103,25 +103,99 @@ const key = process.env.API_KEY || "default";
 - **IBM Bob account** (provided via hackathon portal — for the development that produced this extension)
 - **IBM Cloud account** with watsonx.ai access (for the AI false-positive filter — see [WATSONX_SETUP.md](./WATSONX_SETUP.md))
 
-## Setup
+## Installation
+
+There are three ways to install Snoffy Dog. Pick whichever matches your situation.
+
+### Option A — Install the prebuilt VSIX (fastest)
+
+The repo ships a prebuilt `snoffy-dog-0.1.0.vsix` you can install directly into VS Code or any VS Code-compatible IDE (including IBM Bob IDE).
+
+1. Clone or download this repo
+2. Open VS Code
+3. Open the **Extensions** panel (`Ctrl+Shift+X`)
+4. Click the **`...`** menu in the top-right of the Extensions panel
+5. Choose **"Install from VSIX..."**
+6. Select `snoffy-dog-0.1.0.vsix` from the repo root
+7. Reload VS Code when prompted
+
+### Option B — Build the VSIX from source
+
+If you want to inspect or modify the code before installing:
+
+```bash
+# Clone the repo
+git clone https://github.com/psc0des/snoffy-dog.git
+cd snoffy-dog
+
+# Install dependencies and compile
+npm install
+npm run compile
+
+# Install vsce (one-time, global)
+npm install -g @vscode/vsce
+
+# Package the extension into a .vsix
+vsce package
+# → produces snoffy-dog-0.1.0.vsix
+```
+
+Then follow steps 2–7 of **Option A** to install the resulting `.vsix`.
+
+### Option C — Run from source (for development)
+
+To debug or modify the extension live:
+
+```bash
+git clone https://github.com/psc0des/snoffy-dog.git
+cd snoffy-dog
+npm install
+npm run compile
+```
+
+Open the folder in VS Code and press **F5**. This launches an Extension Development Host window with Snoffy Dog loaded.
+
+---
+
+## Configuration
 
 ### Quick Start (Without AI)
 
-The extension works out-of-the-box with regex-based scanning. All findings will be marked as "Needs Review".
+The extension works out-of-the-box with regex-based scanning. All findings will be marked as "Needs Review" (since Granite filtering is disabled).
 
 ### Enable AI Filtering (Recommended)
 
-To enable intelligent false-positive filtering with IBM watsonx.ai:
+To enable intelligent false-positive filtering with IBM watsonx.ai, set three environment variables **before launching VS Code** so the extension picks them up at startup.
 
 1. Get your IBM Cloud credentials (see [WATSONX_SETUP.md](./WATSONX_SETUP.md))
+
 2. Set environment variables:
-   ```bash
-   WATSONX_API_KEY=your-ibm-cloud-api-key
-   WATSONX_PROJECT_ID=your-watsonx-project-id
-   WATSONX_URL=us-south.ml.cloud.ibm.com  # Optional
+
+   **Windows (PowerShell — current session):**
+   ```powershell
+   $env:WATSONX_API_KEY = "your-ibm-cloud-api-key"
+   $env:WATSONX_PROJECT_ID = "your-watsonx-project-id"
+   $env:WATSONX_URL = "us-south.ml.cloud.ibm.com"
    ```
-3. Reload VS Code
-4. Start scanning!
+
+   **Windows (System-wide, persistent):**
+   - Press `Win+R` → type `sysdm.cpl` → Advanced → Environment Variables
+   - Under **User variables**, add `WATSONX_API_KEY`, `WATSONX_PROJECT_ID`, `WATSONX_URL`
+   - Restart VS Code
+
+   **macOS / Linux (bash/zsh):**
+   ```bash
+   export WATSONX_API_KEY="your-ibm-cloud-api-key"
+   export WATSONX_PROJECT_ID="your-watsonx-project-id"
+   export WATSONX_URL="us-south.ml.cloud.ibm.com"
+   ```
+   Add these lines to `~/.bashrc` or `~/.zshrc` to persist across sessions.
+
+3. Launch VS Code from the same shell (so it inherits the env vars), or restart VS Code if you set them system-wide
+
+4. Open any workspace and click **"Go Sniffing!"** in the Snoffy panel
+
+> **Note on `WATSONX_URL`:** Use the bare hostname (`us-south.ml.cloud.ibm.com`), NOT a full URL with `https://`. The extension adds the protocol itself; including it twice causes DNS hangs.
 
 📖 **Full setup guide**: [WATSONX_SETUP.md](./WATSONX_SETUP.md)
 
