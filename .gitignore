@@ -1,0 +1,13 @@
+.env
+.env.*
+*.key
+*.pem
+secrets.json
+config/credentials.json
+node_modules
+out
+*.vsix
+.vscode-test/
+.DS_Store
+
+# Made with Bob

@@ -1,0 +1,54 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/out/**/*.js"
+      ],
+      "preLaunchTask": "${defaultBuildTask}",
+      "env": {
+        "WATSONX_API_KEY": "${env:WATSONX_API_KEY}",
+        "WATSONX_PROJECT_ID": "${env:WATSONX_PROJECT_ID}",
+        "WATSONX_URL": "${env:WATSONX_URL}"
+      }
+    },
+    {
+      "name": "Run Extension (with AI credentials)",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/out/**/*.js"
+      ],
+      "preLaunchTask": "${defaultBuildTask}",
+      "env": {
+        "WATSONX_API_KEY": "YOUR_API_KEY_HERE",
+        "WATSONX_PROJECT_ID": "YOUR_PROJECT_ID_HERE",
+        "WATSONX_URL": "us-south.ml.cloud.ibm.com"
+      }
+    },
+    {
+      "name": "Extension Tests",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}",
+        "--extensionTestsPath=${workspaceFolder}/out/test/suite/index"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/out/test/**/*.js"
+      ],
+      "preLaunchTask": "${defaultBuildTask}"
+    }
+  ]
+}
+
+// Made with Bob

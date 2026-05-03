@@ -1,0 +1,7 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 3C10.34 3 9 4.34 9 6C9 6.35 9.07 6.68 9.18 7H7C5.9 7 5 7.9 5 9V11C5 12.1 5.9 13 7 13H8V19C8 20.1 8.9 21 10 21H14C15.1 21 16 20.1 16 19V13H17C18.1 13 19 12.1 19 11V9C19 7.9 18.1 7 17 7H14.82C14.93 6.68 15 6.35 15 6C15 4.34 13.66 3 12 3ZM10 6C10 5.45 10.45 5 11 5H13C13.55 5 14 5.45 14 6C14 6.55 13.55 7 13 7H11C10.45 7 10 6.55 10 6ZM10 15V19H14V15H10Z" fill="currentColor"/>
+  <circle cx="10" cy="10" r="1" fill="currentColor"/>
+  <circle cx="14" cy="10" r="1" fill="currentColor"/>
+</svg>
+
+<!-- Made with Bob -->

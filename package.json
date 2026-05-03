@@ -1,0 +1,90 @@
+{
+  "name": "snoffy-dog",
+  "displayName": "Snoffy Dog Security Scanner",
+  "description": "A cute security scanner that sniffs out vulnerabilities in your code",
+  "version": "0.1.0",
+  "publisher": "snoffy",
+  "icon": "media/icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Linters",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "snoffyDog",
+          "title": "Snoffy Dog",
+          "icon": "media/snoffy-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "snoffyDog": [
+        {
+          "type": "webview",
+          "id": "snoffyDog.panel",
+          "name": "Security Scanner"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "snoffyDog.startScan",
+        "title": "Go Sniffing!",
+        "category": "Snoffy Dog",
+        "icon": "$(search)"
+      },
+      {
+        "command": "snoffyDog.clearFindings",
+        "title": "Clear Findings",
+        "category": "Snoffy Dog",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "snoffyDog.openPanel",
+        "title": "Open Snoffy Panel",
+        "category": "Snoffy Dog"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "snoffyDog.startScan",
+          "when": "view == snoffyDog.panel",
+          "group": "navigation"
+        },
+        {
+          "command": "snoffyDog.clearFindings",
+          "when": "view == snoffyDog.panel",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.x",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.x",
+    "@typescript-eslint/parser": "^6.x",
+    "eslint": "^8.x",
+    "typescript": "^5.3.0",
+    "@vscode/vsce": "^2.22.0"
+  },
+  "dependencies": {}
+}
