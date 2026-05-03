@@ -14,7 +14,7 @@ Snoffy Dog combines a 22-rule regex scanner with **IBM watsonx.ai Granite-4-h-sm
 
 ## Demo Video
 
-📹 **3-minute walkthrough**: [YOUR_VIDEO_URL_HERE]
+📹 **3-minute walkthrough**: https://youtu.be/luh6A40PJI8 
 
 ## External AI Tool Disclosure
 
